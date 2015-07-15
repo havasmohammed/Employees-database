@@ -15,3 +15,4 @@ cur.execute("select * from experience_Details")
 # print all the first cell of all the rows
 for row in cur.fetchall() :
     print row
+cur.close()

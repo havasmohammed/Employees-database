@@ -16,35 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `basic_details`
---
-
-DROP TABLE IF EXISTS `basic_details`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `basic_details` (
-  `empno` int(11) NOT NULL DEFAULT '0',
-  `name` varchar(30) DEFAULT NULL,
-  `age` int(11) DEFAULT NULL,
-  `designationid` int(11) DEFAULT NULL,
-  `salary` int(11) DEFAULT NULL,
-  PRIMARY KEY (`empno`),
-  KEY `designationid` (`designationid`),
-  CONSTRAINT `basic_details_ibfk_1` FOREIGN KEY (`designationid`) REFERENCES `designation_details` (`designationid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `basic_details`
---
-
-LOCK TABLES `basic_details` WRITE;
-/*!40000 ALTER TABLE `basic_details` DISABLE KEYS */;
-INSERT INTO `basic_details` VALUES (101,'Arun',28,441,25000),(102,'Anu',23,442,15000),(103,'Anand',29,443,27000),(104,'Jax',32,444,35000),(105,'Navas',39,445,50000),(106,'Issac',30,446,30000),(109,'Amer',29,442,15000),(110,'Hari',36,446,35000),(112,'Manu',28,446,35000),(113,'Yash',31,446,35000),(114,'Nandu',34,444,40000);
-/*!40000 ALTER TABLE `basic_details` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `daily_activities`
 --
 
@@ -52,13 +23,13 @@ DROP TABLE IF EXISTS `daily_activities`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `daily_activities` (
-  `designationid` int(11) NOT NULL DEFAULT '0',
+  `empno` int(11) NOT NULL DEFAULT '0',
   `date` date DEFAULT NULL,
   `project` varchar(30) DEFAULT NULL,
   `type` varchar(30) DEFAULT NULL,
   `description` varchar(30) DEFAULT NULL,
   `timespent` int(11) DEFAULT NULL,
-  PRIMARY KEY (`designationid`)
+  PRIMARY KEY (`empno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -68,7 +39,7 @@ CREATE TABLE `daily_activities` (
 
 LOCK TABLES `daily_activities` WRITE;
 /*!40000 ALTER TABLE `daily_activities` DISABLE KEYS */;
-INSERT INTO `daily_activities` VALUES (441,'2015-07-07','Network solutions','coding','ccchhh',8),(442,'2015-07-07','NA','training','python',8),(443,'2015-07-07','Like that ios app','webframe','aaddaawe',8),(444,'2015-07-07','Network solutions','development','aassvv',8),(445,'2015-07-07','Network solutions','management','akkhh',8),(446,'2015-07-07','Recruitment','offcampus','llksmm',8);
+INSERT INTO `daily_activities` VALUES (101,'2015-07-07','Network solutions','coding','aauujj',8),(102,'2015-07-07','NA','training','python',8),(103,'2015-07-07','like that ios app','webframe','hhynn',8),(104,'2015-07-07','Network solutions','development','jjuh',8),(105,'2015-07-07','Networl solutions','management','kkyh',8),(106,'2015-07-07','recruitment','off campus','asayh',8);
 /*!40000 ALTER TABLE `daily_activities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -80,9 +51,9 @@ DROP TABLE IF EXISTS `department_details`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `department_details` (
-  `designationid` int(11) NOT NULL DEFAULT '0',
+  `empno` int(11) NOT NULL DEFAULT '0',
   `department` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`designationid`)
+  PRIMARY KEY (`empno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -92,7 +63,7 @@ CREATE TABLE `department_details` (
 
 LOCK TABLES `department_details` WRITE;
 /*!40000 ALTER TABLE `department_details` DISABLE KEYS */;
-INSERT INTO `department_details` VALUES (441,'Python'),(442,'Python'),(443,'Java'),(444,'Reactjs'),(445,'Python'),(446,'Recruitment');
+INSERT INTO `department_details` VALUES (101,'python'),(102,'python'),(103,'java'),(104,'reactjs'),(105,'python'),(106,'recruitment');
 /*!40000 ALTER TABLE `department_details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,6 +92,36 @@ INSERT INTO `designation_details` VALUES (441,'Developer'),(442,'Intern'),(443,'
 UNLOCK TABLES;
 
 --
+-- Table structure for table `employees`
+--
+
+DROP TABLE IF EXISTS `employees`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `employees` (
+  `name` varchar(30) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `designationid` int(11) DEFAULT NULL,
+  `salary` int(11) DEFAULT NULL,
+  `empno` int(11) DEFAULT NULL,
+  KEY `designationid` (`designationid`),
+  KEY `empno` (`empno`),
+  CONSTRAINT `employees_ibfk_2` FOREIGN KEY (`empno`) REFERENCES `department_details` (`empno`),
+  CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`designationid`) REFERENCES `designation_details` (`designationid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `employees`
+--
+
+LOCK TABLES `employees` WRITE;
+/*!40000 ALTER TABLE `employees` DISABLE KEYS */;
+INSERT INTO `employees` VALUES ('Arun',28,441,25000,NULL),('Anu',23,442,15000,NULL),('Anand',29,443,27000,NULL),('Jax',32,444,35000,NULL),('Navas',39,445,50000,NULL),('Issac',30,446,30000,NULL),('Amer',29,442,15000,NULL),('Hari',36,446,35000,NULL),('Manu',28,446,35000,NULL),('Yash',31,446,35000,NULL),('Nandu',34,444,40000,NULL),('kdfvjh',55,441,78002,106);
+/*!40000 ALTER TABLE `employees` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `experience_Details`
 --
 
@@ -128,9 +129,9 @@ DROP TABLE IF EXISTS `experience_Details`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `experience_Details` (
-  `designationid` int(11) NOT NULL DEFAULT '0',
+  `empno` int(11) NOT NULL DEFAULT '0',
   `level` int(11) DEFAULT NULL,
-  PRIMARY KEY (`designationid`)
+  PRIMARY KEY (`empno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -140,7 +141,7 @@ CREATE TABLE `experience_Details` (
 
 LOCK TABLES `experience_Details` WRITE;
 /*!40000 ALTER TABLE `experience_Details` DISABLE KEYS */;
-INSERT INTO `experience_Details` VALUES (441,2),(442,0),(443,2),(444,3),(445,4),(446,3);
+INSERT INTO `experience_Details` VALUES (101,2),(102,0),(103,2),(104,3),(105,4),(106,3);
 /*!40000 ALTER TABLE `experience_Details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -178,4 +179,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-13 12:13:40
+-- Dump completed on 2015-07-15 12:42:42

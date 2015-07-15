@@ -10,8 +10,9 @@ db = MySQLdb.connect(host="localhost", # your host, usually localhost
 cur = db.cursor() 
 
 # Use all the SQL you like
-cur.execute("select basic_details.empno, basic_details.name, basic_details.designationid, basic_details.salary, qualification_details.qualification, qualification_details.branch from basic_details left join qualification_details on basic_details.designationid=qualification_details.designationid")
+cur.execute("select employees.empno, employees.name, employees.designationid, employees.salary, qualification_details.qualification, qualification_details.branch from employees left join qualification_details on employees.designationid=qualification_details.designationid")
 
 # print all the first cell of all the rows
 for row in cur.fetchall() :
     print row
+cur.close()

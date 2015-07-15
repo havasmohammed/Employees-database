@@ -1,8 +1,8 @@
-s=int(raw_input("enter the choice 1.basic_details 2.designation_details 3.qualification_details 4.daily_activities "))
+s=int(raw_input("enter the choice 1.emoployees 2.designation_details 3.qualification_details 4.daily_activities "))
 if s==1:
-	from basic_details import basicdetails
-	from basic_details import selection
-	from basic_details import join
+	from employees import employees
+	#from employees import selection
+	from employees import join
 elif s==2:
 	from designation_details import designation
 	from designation_details import selectiondes
