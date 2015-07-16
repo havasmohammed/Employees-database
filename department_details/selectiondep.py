@@ -1,10 +1,10 @@
 #!/usr/bin/python
 import MySQLdb
 
-db = MySQLdb.connect(host="localhost", # your host, usually localhost
-                     user="root", # your username
-                      passwd="havas1993z", # your password
-                      db="Employees") # name of the data base
+db = MySQLdb.connect(host = "localhost", # your host, usually localhost
+                     user = "root", # your username
+                      passwd = "havas1993z", # your password
+                      db = "Employees") # name of the data base
 # you must create a Cursor object. It will let
 #  you execute all the queries you need
 cur = db.cursor() 
