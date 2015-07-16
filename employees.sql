@@ -106,8 +106,8 @@ CREATE TABLE `employees` (
   `empno` int(11) DEFAULT NULL,
   KEY `designationid` (`designationid`),
   KEY `empno` (`empno`),
-  CONSTRAINT `employees_ibfk_2` FOREIGN KEY (`empno`) REFERENCES `department_details` (`empno`),
-  CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`designationid`) REFERENCES `designation_details` (`designationid`)
+  CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`designationid`) REFERENCES `designation_details` (`designationid`),
+  CONSTRAINT `employees_ibfk_2` FOREIGN KEY (`empno`) REFERENCES `department_details` (`empno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -122,13 +122,13 @@ INSERT INTO `employees` VALUES ('Arun',28,441,25000,NULL),('Anu',23,442,15000,NU
 UNLOCK TABLES;
 
 --
--- Table structure for table `experience_Details`
+-- Table structure for table `experience_details`
 --
 
-DROP TABLE IF EXISTS `experience_Details`;
+DROP TABLE IF EXISTS `experience_details`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `experience_Details` (
+CREATE TABLE `experience_details` (
   `empno` int(11) NOT NULL DEFAULT '0',
   `level` int(11) DEFAULT NULL,
   PRIMARY KEY (`empno`)
@@ -136,13 +136,13 @@ CREATE TABLE `experience_Details` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `experience_Details`
+-- Dumping data for table `experience_details`
 --
 
-LOCK TABLES `experience_Details` WRITE;
-/*!40000 ALTER TABLE `experience_Details` DISABLE KEYS */;
-INSERT INTO `experience_Details` VALUES (101,2),(102,0),(103,2),(104,3),(105,4),(106,3);
-/*!40000 ALTER TABLE `experience_Details` ENABLE KEYS */;
+LOCK TABLES `experience_details` WRITE;
+/*!40000 ALTER TABLE `experience_details` DISABLE KEYS */;
+INSERT INTO `experience_details` VALUES (101,2),(102,0),(103,2),(104,3),(105,4),(106,3);
+/*!40000 ALTER TABLE `experience_details` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -179,4 +179,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-15 12:42:42
+-- Dump completed on 2015-07-16 16:55:21
